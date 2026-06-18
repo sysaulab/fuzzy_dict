@@ -15,6 +15,29 @@ pub struct FuzzyDict {
 }
 
 impl FuzzyDict {
+    
+    /// Returns the number of non‑empty buckets.
+    pub fn bucket_count(&self) -> usize {
+        self.buckets.len()
+    }
+
+    /// Returns the size of the largest bucket (number of words).
+    pub fn largest_bucket_size(&self) -> usize {
+        self.buckets.values().map(|v| v.len()).max().unwrap_or(0)
+    }
+
+    /// Returns the fraction of buckets that contain exactly one word.
+    pub fn singleton_bucket_ratio(&self) -> f64 {
+        let total = self.buckets.len() as f64;
+        if total == 0.0 {
+            return 0.0;
+        }
+        let singletons = self.buckets.values().filter(|v| v.len() == 1).count() as f64;
+        singletons / total
+    }
+
+
+
     pub fn with_alphabet(alphabet: Alphabet) -> Self {
         FuzzyDict {
             alphabet,

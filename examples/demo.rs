@@ -36,6 +36,11 @@ fn main() {
         0.0
     };
 
+    // --- Bucket statistics ---
+    let bucket_count = dict.bucket_count();
+    let largest_bucket = dict.largest_bucket_size();
+    let singleton_ratio = dict.singleton_bucket_ratio() * 100.0;
+
     // --- Perform search with limit ---
     let start_query = Instant::now();
     let results = dict.search_limit(query, threshold, limit);
@@ -43,8 +48,11 @@ fn main() {
 
     // --- Output results ---
     println!("Dictionary loaded from '{}'", dict_path);
-    println!("  Total words: {}", total_words);
-    println!("  Load time:   {:.2} ms (≈ {:.2} µs per word)",
+    println!("  Total words:      {} words", total_words);
+    println!("  Total buckets:    {} buckets", bucket_count);
+    println!("  Largest bucket:   {} words", largest_bucket);
+    println!("  Singleton buckets: {:.1}%", singleton_ratio);
+    println!("  Load time:        {:.3} ms (≈ {:.3} µs per word)",
              load_duration.as_secs_f64() * 1000.0,
              per_word_us);
     println!("\nQuery: '{}' (threshold = {:.2}, limit = {})", query, threshold, limit);
