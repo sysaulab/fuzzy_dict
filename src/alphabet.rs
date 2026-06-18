@@ -1,6 +1,4 @@
 use std::collections::{HashMap, HashSet};
-use std::fs::File;
-use std::io::{BufRead, BufReader};
 use std::path::Path;
 
 /// Bit reserved for any character not explicitly defined in the alphabet.
