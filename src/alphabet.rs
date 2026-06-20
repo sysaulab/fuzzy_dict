@@ -22,17 +22,42 @@ const ARMENIAN_ALPHABET: &str = include_str!("../assets/armenian.txt");
 const GEORGIAN_ALPHABET: &str = include_str!("../assets/georgian.txt");
 const THAI_ALPHABET: &str = include_str!("../assets/thai.txt");
 const DEVANAGARI_ALPHABET: &str = include_str!("../assets/devanagari.txt");
+const ADLAM_ALPHABET: &str = include_str!("../assets/adlam.txt");
+const COPTIC_ALPHABET: &str = include_str!("../assets/coptic.txt");
+const ETHIOPIC_ALPHABET: &str = include_str!("../assets/ethiopic.txt");
+const NKO_ALPHABET: &str = include_str!("../assets/nko.txt");
+const TIFINAGH_ALPHABET: &str = include_str!("../assets/tifinagh.txt");
+const BAYBAYIN_ALPHABET: &str = include_str!("../assets/baybayin.txt");
+const BURMESE_ALPHABET: &str = include_str!("../assets/burmese.txt");
+const JAVANESE_ALPHABET: &str = include_str!("../assets/javanese.txt");
+const KHMER_ALPHABET: &str = include_str!("../assets/khmer.txt");
+const LAO_ALPHABET: &str = include_str!("../assets/lao.txt");
 
 const ALL_STANDARD: &[(&str, &str)] = &[
+    //europe
     ("latin", LATIN_ALPHABET),
-    ("cyrillic", CYRILLIC_ALPHABET),
     ("greek", GREEK_ALPHABET),
+    ("armenian", ARMENIAN_ALPHABET),
+    ("devanagari", DEVANAGARI_ALPHABET),
+    //east-asia
     ("arabic", ARABIC_ALPHABET),
     ("hebrew", HEBREW_ALPHABET),
-    ("armenian", ARMENIAN_ALPHABET),
+    //slavic
+    ("cyrillic", CYRILLIC_ALPHABET),
     ("georgian", GEORGIAN_ALPHABET),
+    //africa
+    ("tifinagh", TIFINAGH_ALPHABET),
+    ("nko", NKO_ALPHABET),
+    ("ethiopic", ETHIOPIC_ALPHABET),
+    ("coptic", COPTIC_ALPHABET),
+    ("adlam", ADLAM_ALPHABET),
+    //se-asia
     ("thai", THAI_ALPHABET),
-    ("devanagari", DEVANAGARI_ALPHABET),
+    ("baybayin", BAYBAYIN_ALPHABET),
+    ("burmese", BURMESE_ALPHABET),
+    ("javanese", JAVANESE_ALPHABET),
+    ("khmer", KHMER_ALPHABET),
+    ("lao", LAO_ALPHABET),
 ];
 
 impl Alphabet {
