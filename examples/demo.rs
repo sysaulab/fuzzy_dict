@@ -43,7 +43,7 @@ fn main() {
 
     // --- Perform search with limit ---
     let start_query = Instant::now();
-    let results = dict.search_limit(query, threshold, limit);
+    let results = dict.search_limit(query, limit);
     let query_duration = start_query.elapsed();
 
     // --- Output results ---

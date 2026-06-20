@@ -45,7 +45,7 @@ impl Alphabet {
 
     /// Loads all standard alphabets (Latin, Cyrillic, Greek) merged line‑wise.
     pub fn load_standard() -> Self {
-        let contents = vec![LATIN_ALPHABET, CYRILLIC_ALPHABET, GREEK_ALPHABET];
+        let contents: Vec<&str> = ALL_STANDARD.iter().map(|(_, content)| *content).collect();
         Alphabet::from_contents(contents)
     }
 
@@ -141,7 +141,7 @@ impl Alphabet {
         mask
     }
 
-    /// Returns the number of explicitly defined bits (excluding the unknown bit).
+/*     /// Returns the number of explicitly defined bits (excluding the unknown bit).
     pub fn num_bits(&self) -> usize {
         // The maximum bit we assigned is the number of lines we processed.
         // We can compute by finding the max bit in char_to_bit, but it's simpler to track.
@@ -153,7 +153,7 @@ impl Alphabet {
             }
         }
         max_bit // because bits are contiguous from 1..max_bit
-    }
+    }*/
 }
 
 impl Default for Alphabet {
