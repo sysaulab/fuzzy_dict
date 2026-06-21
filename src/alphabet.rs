@@ -13,6 +13,7 @@ pub struct Alphabet {
 
 // ─── Embedded alphabet definitions ───────────────────────────────────────────
 
+const SYMBOL_ALPHABET: &str = include_str!("../assets/symbols.txt");
 const LATIN_ALPHABET: &str = include_str!("../assets/latin.txt");
 const CYRILLIC_ALPHABET: &str = include_str!("../assets/cyrillic.txt");
 const GREEK_ALPHABET: &str = include_str!("../assets/greek.txt");
@@ -37,8 +38,13 @@ const GUJARATI_ALPHABET: &str = include_str!("../assets/gujarati.txt");
 const GURMUKHI_ALPHABET: &str = include_str!("../assets/gurmukhi.txt");
 const TAMIL_ALPHABET: &str = include_str!("../assets/tamil.txt");
 const TELUGU_ALPHABET: &str = include_str!("../assets/telugu.txt");
+const CANABO_ALPHABET: &str = include_str!("../assets/canadian_aboriginal.txt");
+const CHEROKEE_ALPHABET: &str = include_str!("../assets/cherokee.txt");
+const OSAGE_ALPHABET: &str = include_str!("../assets/osage.txt");
+const KANNADA_ALPHABET: &str = include_str!("../assets/kannada.txt");
 
 const ALL_STANDARD: &[(&str, &str)] = &[
+    ("symbol", SYMBOL_ALPHABET),
     //europe
     ("latin", LATIN_ALPHABET),
     ("greek", GREEK_ALPHABET),
@@ -50,6 +56,7 @@ const ALL_STANDARD: &[(&str, &str)] = &[
     ("gurmukhi", GURMUKHI_ALPHABET),
     ("tamil", TAMIL_ALPHABET),
     ("telugu", TELUGU_ALPHABET),
+    ("kannada", KANNADA_ALPHABET),
     //east-asia
     ("arabic", ARABIC_ALPHABET),
     ("hebrew", HEBREW_ALPHABET),
@@ -69,6 +76,11 @@ const ALL_STANDARD: &[(&str, &str)] = &[
     ("javanese", JAVANESE_ALPHABET),
     ("khmer", KHMER_ALPHABET),
     ("lao", LAO_ALPHABET),
+    //native_americans
+    ("canadian_aboriginal", CANABO_ALPHABET),
+    ("cherokee", CHEROKEE_ALPHABET),
+    ("osage", OSAGE_ALPHABET),
+    
 ];
 
 impl Alphabet {
