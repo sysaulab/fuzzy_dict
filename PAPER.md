@@ -107,9 +107,6 @@ fn simple_score(a: &str, b: &str) -> f64 {
 
 This scorer is significantly cheaper than Jaro‑Winkler or Levenshtein distance and is sufficient for ranking the small candidate set. It can be replaced with a more sophisticated metric if needed.
 
----
-
-The rest of the paper remains unchanged. Would you like me to also update the **README.md** to mention this scoring improvement?
 ### 2.5 Complexity Analysis
 
 | Operation | Time Complexity |
