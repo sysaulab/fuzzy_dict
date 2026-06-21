@@ -72,8 +72,6 @@ Given a query \( q \), the search proceeds as follows:
 
 Because the number of effective bits is at most 64, generating the list of masks is constant time, and each bucket lookup is O(1). This makes the search extremely fast.
 
-I've updated **Section 2.4 (Scoring)** in the PAPER.md to reflect your improved algorithm. The change ensures that **anagrams or words with different lengths don't falsely score 1.0**, making the filter more accurate.
-
 ### 2.4 Scoring
 
 The implementation uses a fast inline scorer that computes the length of the longest common prefix and suffix between the query and the candidate, normalised by the maximum length, and then **capped by the length ratio** to prevent false perfect matches:
