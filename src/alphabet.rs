@@ -32,13 +32,24 @@ const BURMESE_ALPHABET: &str = include_str!("../assets/burmese.txt");
 const JAVANESE_ALPHABET: &str = include_str!("../assets/javanese.txt");
 const KHMER_ALPHABET: &str = include_str!("../assets/khmer.txt");
 const LAO_ALPHABET: &str = include_str!("../assets/lao.txt");
+const BENGALI_ALPHABET: &str = include_str!("../assets/bengali.txt");
+const GUJARATI_ALPHABET: &str = include_str!("../assets/gujarati.txt");
+const GURMUKHI_ALPHABET: &str = include_str!("../assets/gurmukhi.txt");
+const TAMIL_ALPHABET: &str = include_str!("../assets/tamil.txt");
+const TELUGU_ALPHABET: &str = include_str!("../assets/telugu.txt");
 
 const ALL_STANDARD: &[(&str, &str)] = &[
     //europe
     ("latin", LATIN_ALPHABET),
     ("greek", GREEK_ALPHABET),
     ("armenian", ARMENIAN_ALPHABET),
+    //india
     ("devanagari", DEVANAGARI_ALPHABET),
+    ("bengali", BENGALI_ALPHABET),
+    ("gujarati", GUJARATI_ALPHABET),
+    ("gurmukhi", GURMUKHI_ALPHABET),
+    ("tamil", TAMIL_ALPHABET),
+    ("telugu", TELUGU_ALPHABET),
     //east-asia
     ("arabic", ARABIC_ALPHABET),
     ("hebrew", HEBREW_ALPHABET),
