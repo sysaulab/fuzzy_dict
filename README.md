@@ -1,6 +1,6 @@
 # fuzzy_dict
 
-**fuzzy_dict** is a high‑performance fuzzy string matching library for Rust. It uses a character‑presence bitmask filter to quickly narrow down the search space before applying a similarity scorer. The approach is **conservative** (no false negatives) and can reduce the number of candidates that need to be scored by 80‑95%, making it ideal for large dictionaries.
+**fuzzy_dict** is a high‑performance fuzzy string matching library for Rust. It uses a character‑presence bitmask filter to quickly narrow down the search space before applying a similarity scorer. The approach is **conservative** (no false negatives) and can reduce the number of candidates that need to be scored by only comparing a small pool of most likely candidates, making it ideal for large dictionaries.
 
 > This library is a weekend project, but it’s open source and ready to use. If you find it useful, feel free to polish and upload it to crates.io!
 
