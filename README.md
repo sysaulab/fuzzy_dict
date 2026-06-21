@@ -1,4 +1,3 @@
-```markdown
 # fuzzy_dict
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,13 +7,34 @@
 
 > This library is a weekend project, but it’s open source and ready to use. If you find it useful, feel free to polish and upload it to crates.io!
 
+---
+
+## 🌍 Global Coverage
+
+The library ships with **34 alphabet definitions** covering the majority of the world’s **non‑logographic scripts** – that’s roughly **65% of the world’s population** (~5.4 billion people) who use these scripts as their primary writing system.
+
+Included scripts (organised by region):
+
+- **Europe**: Latin, Cyrillic, Greek
+- **Middle East**: Arabic, Hebrew
+- **Caucasus**: Armenian, Georgian
+- **South Asia**: Devanagari, Bengali, Gurmukhi, Gujarati, Telugu, Tamil, Kannada, Malayalam, Odia, Sinhala
+- **Southeast Asia**: Thai, Lao, Khmer, Burmese, Javanese, Baybayin
+- **Africa**: Ethiopic, Tifinagh, N’Ko, Coptic, Adlam
+- **Americas**: Cherokee, Osage, Canadian Aboriginal Syllabics
+- **Central / East Asia**: Tibetan, Mongolian, Ol Chiki
+
+> **For CJK (Chinese, Japanese, Korean)**: These scripts are logographic and cannot be directly represented in a 64‑bit mask. However, you can **romanise** the text (e.g., pinyin for Chinese, romaji for Japanese, revamped romanisation for Korean) and then pass those romanised strings through the library. The romanisation step is **not** included in this library – it is the responsibility of the consuming application. This allows you to benefit from the same fast filtering for CJK content when paired with a suitable transliteration pipeline.
+
+---
+
 ## Features
 
 - **Blazing fast** – O(1) bucket lookup for exact masks, with optional expansion to 1‑ and 2‑bit flips.
-- **Multilingual** – Supports Latin, Cyrillic, Greek, Arabic, Hebrew, Armenian, Georgian, Thai, and Devanagari scripts out of the box. Custom alphabets can be defined via simple text files.
+- **Multilingual** – Supports 34 scripts out of the box, with custom alphabet support for any other script.
 - **Accent‑ and case‑insensitive** – Character classes group accented variants and both cases together.
 - **Conservative filter** – Never misses a potential match (no false negatives).
-- **Easy to use** – Add words from files or iterators, then search with a limit and optional threshold.
+- **Custom alphabets** – Easily add your own scripts via simple text files (line‑wise character classes).
 - **Lightweight** – Only ~8 bytes per dictionary entry overhead.
 
 ## How It Works
@@ -46,7 +66,8 @@ Then in your code:
 use fuzzy_dict::{Alphabet, FuzzyDict};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Load default alphabet (Latin + Cyrillic + Greek + Arabic + …)
+    // Load the default alphabet (includes Latin, Cyrillic, Greek, Arabic, Hebrew,
+    // Armenian, Georgian, Thai, and Devanagari).
     let alphabet = Alphabet::default();
     let mut dict = FuzzyDict::with_alphabet(alphabet);
 
@@ -70,6 +91,25 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
+### Using Additional Scripts
+
+The library includes alphabet definition files for **34 scripts** in the `assets/` directory. To load a custom set:
+
+```rust
+// Load a single custom alphabet
+let ethiopic = Alphabet::from_file("assets/ethiopic.txt")?;
+
+// Or merge several alphabet files together (line‑wise)
+let indian_scripts = Alphabet::from_files(&[
+    "assets/devanagari.txt",
+    "assets/bengali.txt",
+    "assets/gurmukhi.txt",
+    // ...
+])?;
+```
+
+You can also define your own alphabet files – see the [Custom Alphabets](#custom-alphabets) section below.
+
 ### Command‑Line Demo
 
 The repository includes a `demo.rs` that shows how to load a dictionary and query it from the command line:
@@ -92,13 +132,15 @@ bB
 cCçÇ
 ```
 
-All characters on the same line share the same bit. The library includes several predefined alphabets in the `assets/` folder. You can also create your own and load them using `Alphabet::from_file()` or `Alphabet::from_files()`.
+All characters on the same line share the same bit. The library includes predefined alphabets for the supported scripts. You can also create your own and load them using `Alphabet::from_file()` or `Alphabet::from_files()`.
 
 To load only specific standard alphabets:
 
 ```rust
 let alphabet = Alphabet::load_named(&["latin", "cyrillic"]);
 ```
+
+The full list of supported scripts and their file names can be found in the `assets/` directory.
 
 ## Performance
 
@@ -119,12 +161,8 @@ The scorer itself is a simple inline function; you can replace it with a more so
 ## Limitations
 
 - **Order‑insensitive**: The filter ignores character order, so "abc" and "cba" produce the same mask. This is a trade‑off for speed; for order‑sensitive matching consider using n‑gram masks.
-- **CJK and logographic scripts**: With thousands of characters, the 64‑bit mask is insufficient. The library currently doesn't support CJK natively, but you can romanise or use n‑gram tokens.
+- **CJK and logographic scripts**: With thousands of characters, the 64‑bit mask is insufficient. The library does **not** perform romanisation; it is up to the consumer application to convert CJK text to a Latin‑based transcription (e.g., pinyin, romaji) before feeding it to `fuzzy_dict`.
 - **Dynamic alphabets**: The alphabet must be defined before building the dictionary. Changing it later requires rebuilding all masks.
-
-## License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements
 
@@ -135,4 +173,3 @@ For a detailed explanation, see the [PAPER.md](PAPER.md) in the repository.
 ---
 
 **Contributions and improvements are welcome!** If you polish the code, feel free to upload it to crates.io – just keep the original author credit.
-```

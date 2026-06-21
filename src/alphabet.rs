@@ -38,17 +38,25 @@ const GUJARATI_ALPHABET: &str = include_str!("../assets/gujarati.txt");
 const GURMUKHI_ALPHABET: &str = include_str!("../assets/gurmukhi.txt");
 const TAMIL_ALPHABET: &str = include_str!("../assets/tamil.txt");
 const TELUGU_ALPHABET: &str = include_str!("../assets/telugu.txt");
-const CANABO_ALPHABET: &str = include_str!("../assets/canadian_aboriginal.txt");
+const CANADIAN_ABORIGINAL_ALPHABET: &str = include_str!("../assets/canadian_aboriginal.txt");
 const CHEROKEE_ALPHABET: &str = include_str!("../assets/cherokee.txt");
 const OSAGE_ALPHABET: &str = include_str!("../assets/osage.txt");
 const KANNADA_ALPHABET: &str = include_str!("../assets/kannada.txt");
+const MALAYALAM_ALPHABET: &str = include_str!("../assets/malayalam.txt");
+const ODIA_ALPHABET: &str = include_str!("../assets/odia.txt");
+const SINHALA_ALPHABET: &str = include_str!("../assets/sinhala.txt");
+const TIBETAN_ALPHABET: &str = include_str!("../assets/tibetan.txt");
+const MONGOLIAN_ALPHABET: &str = include_str!("../assets/mongolian.txt");
+const OLCHIKI_ALPHABET: &str = include_str!("../assets/olchiki.txt");
 
 const ALL_STANDARD: &[(&str, &str)] = &[
     ("symbol", SYMBOL_ALPHABET),
+
     //europe
     ("latin", LATIN_ALPHABET),
     ("greek", GREEK_ALPHABET),
     ("armenian", ARMENIAN_ALPHABET),
+
     //india
     ("devanagari", DEVANAGARI_ALPHABET),
     ("bengali", BENGALI_ALPHABET),
@@ -57,27 +65,40 @@ const ALL_STANDARD: &[(&str, &str)] = &[
     ("tamil", TAMIL_ALPHABET),
     ("telugu", TELUGU_ALPHABET),
     ("kannada", KANNADA_ALPHABET),
-    //east-asia
+    ("malayalam", MALAYALAM_ALPHABET),
+    ("odia", ODIA_ALPHABET),
+    ("sinhala", SINHALA_ALPHABET),
+
+    //central-asia
+    ("tibetan", TIBETAN_ALPHABET),
+    ("mongolian", MONGOLIAN_ALPHABET),
+
+    //west-asia
     ("arabic", ARABIC_ALPHABET),
     ("hebrew", HEBREW_ALPHABET),
+
     //slavic
     ("cyrillic", CYRILLIC_ALPHABET),
     ("georgian", GEORGIAN_ALPHABET),
+
     //africa
     ("tifinagh", TIFINAGH_ALPHABET),
     ("nko", NKO_ALPHABET),
     ("ethiopic", ETHIOPIC_ALPHABET),
     ("coptic", COPTIC_ALPHABET),
     ("adlam", ADLAM_ALPHABET),
-    //se-asia
+
+    //south-east-asia
     ("thai", THAI_ALPHABET),
     ("baybayin", BAYBAYIN_ALPHABET),
     ("burmese", BURMESE_ALPHABET),
     ("javanese", JAVANESE_ALPHABET),
     ("khmer", KHMER_ALPHABET),
     ("lao", LAO_ALPHABET),
+    ("olchiki", OLCHIKI_ALPHABET),
+
     //native_americans
-    ("canadian_aboriginal", CANABO_ALPHABET),
+    ("canadian_aboriginal", CANADIAN_ABORIGINAL_ALPHABET),
     ("cherokee", CHEROKEE_ALPHABET),
     ("osage", OSAGE_ALPHABET),
     

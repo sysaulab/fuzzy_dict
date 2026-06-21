@@ -90,12 +90,13 @@ impl FuzzyDict {
     /// This is used internally by `search_limit`.
     fn simple_score(a: &str, b: &str) -> f64 {
         let max_len = std::cmp::max(a.len(), b.len()) as f64;
+        let min_len = std::cmp::min(a.len(), b.len()) as f64;
         if max_len == 0.0 {
             return 1.0;
         }
         let lcp = a.chars().zip(b.chars()).take_while(|(x, y)| x == y).count() as f64;
         let lcs = a.chars().rev().zip(b.chars().rev()).take_while(|(x, y)| x == y).count() as f64;
-        ((lcp + lcs) / max_len).min(1.0)
+        ((lcp + lcs) / max_len).min(min_len/max_len)
     }
 
     /// Search with a limit on the number of results returned.
