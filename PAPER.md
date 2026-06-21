@@ -147,8 +147,8 @@ The search stops collecting additional candidates as soon as `score_sum` reaches
 
 In empirical tests on a 4 MB dictionary (approximately 400,000–500,000 words), the filter achieves:
 
-- **100,000+ queries per second** on first‑generation Atom CPUs
-- **80–95% reduction** in the number of candidates that undergo scoring
+- Sub-millisecond query latency.
+- **95%+ reduction** in the number of candidates that undergo scoring in large sets
 - **O(1) lookup** for the exact mask and O(B²) for expansion, with B ≤ 64
 
 Comparative benchmarks from similar systems show that the bitmask filter closes the performance gap with specialised fuzzy finders while maintaining a simpler implementation.
