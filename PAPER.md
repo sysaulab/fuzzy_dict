@@ -34,7 +34,7 @@ Each string is represented by a fixed‑width bitmask where each bit corresponds
 
 The alphabet is built from one or more text files, where each line defines a class. For example:
 
-```
+```text
 aAáÀâÄãÃ
 bB
 cCçÇ
